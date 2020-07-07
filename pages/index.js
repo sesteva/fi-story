@@ -1,12 +1,12 @@
-import Head from 'next/head'
+import Head from "next/head";
 
-export const config = { amp: true }
+export const config = { amp: true };
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Example AMP Story in Next.js</title>
+        <title>Drive your Finances</title>
         <script
           async
           key="amp-story"
@@ -22,6 +22,7 @@ export default function Home() {
       </Head>
 
       <amp-story
+        id="story"
         standalone=""
         title="Stories in AMP - Hello World"
         publisher="AMP Project"
@@ -33,16 +34,27 @@ export default function Home() {
         {/* <!-- A story consists of one or more pages. Each page is declared by an `amp-story-page` element. Pages are designed by layering videos, images and text. Here we have a page that uses two layers. One layer filling the available space with an image and one text layer that shows a heading. --> */}
         <amp-story-page id="page-1">
           <amp-story-grid-layer template="fill">
-            <amp-img
-              src="https://amp.dev/static/samples/img/story_dog2.jpg"
-              width="720"
-              height="1280"
-              layout="responsive"
-            />
+            <figure>
+              <amp-img
+                src="/static/images/joseph-akbrud-3GX4PJ-qces-unsplash.jpg"
+                width="560"
+                height="920"
+                layout="responsive"
+              />
+              <figcaption
+                style={{
+                  position: "absolute",
+                  bottom: "1rem",
+                  right: "0.5rem",
+                }}
+              >
+                Photo by Joseph Akbrud(Unsplash)
+              </figcaption>
+            </figure>
           </amp-story-grid-layer>
           <amp-story-grid-layer template="vertical">
-            <h1>Hello World</h1>
-            <p>This is an AMP Story.</p>
+            <h1>Reach your Goals</h1>
+            <p>A story about driving your finance</p>
           </amp-story-grid-layer>
         </amp-story-page>
 
@@ -54,14 +66,17 @@ export default function Home() {
               loop=""
               width="720"
               height="960"
-              poster="https://amp.dev/static/samples/img/story_video_dog_cover.jpg"
+              poster="/static/images/emile-seguin-R9OueKOtGGU-unsplash.jpg"
               layout="responsive"
             >
               <source
-                src="https://amp.dev/static/samples/video/story_video_dog.mp4"
+                src="/static/videos/coverr-lake-view-1572182181649.mp4"
                 type="video/mp4"
               />
             </amp-video>
+          </amp-story-grid-layer>
+          <amp-story-grid-layer template="vertical">
+            <h1>How do we get there?</h1>
           </amp-story-grid-layer>
         </amp-story-page>
 
@@ -69,7 +84,7 @@ export default function Home() {
         <amp-story-page id="animation-demo">
           <amp-story-grid-layer template="fill">
             <amp-img
-              src="https://amp.dev/static/samples/img/story_dog4.jpg"
+              src="/static/images/emile-seguin-R9OueKOtGGU-unsplash.jpg"
               animate-in="fly-in-top"
               width="720"
               height="1280"
@@ -77,49 +92,38 @@ export default function Home() {
             />
           </amp-story-grid-layer>
           <amp-story-grid-layer template="thirds">
-            <h2
+            <div
               animate-in="fly-in-bottom"
-              grid-area="lower-third"
+              grid-area="upper-third"
               animate-in-delay="0.4s"
             >
-              Best walk ever!
-            </h2>
-          </amp-story-grid-layer>
-        </amp-story-page>
-
-        {/* <!-- Stories can use predefined layouts to style the page. Here we're using the `thirds` template. For an overview about the available layouts take a look at the [layouts sample](/documentation/examples/style-layout/amp_story_layouts/). --> */}
-        <amp-story-page id="layout-demo">
-          <amp-story-grid-layer template="thirds">
-            <amp-img
-              grid-area="upper-third"
-              src="https://amp.dev/static/samples/img/story_thirds_1.jpg"
-              width="560"
-              height="420"
-              layout="responsive"
-            />
-            <amp-img
+              <span>1. Reduce Costs</span>
+              <p>brief description here</p>
+            </div>
+            <div
+              animate-in="fly-in-bottom"
               grid-area="middle-third"
-              src="https://amp.dev/static/samples/img/story_thirds_2.jpg"
-              width="560"
-              height="420"
-              layout="responsive"
-            />
-            <amp-img
+              animate-in-delay="0.6s"
+            >
+              <span>2. Reduce Debt</span>
+              <p>brief description here</p>
+            </div>
+            <div
+              animate-in="fly-in-bottom"
               grid-area="lower-third"
-              src="https://amp.dev/static/samples/img/story_thirds_3.jpg"
-              width="560"
-              height="420"
-              layout="responsive"
-            />
+              animate-in-delay="0.8s"
+            >
+              <span>3. Pay yourself first</span>
+              <p>brief description here</p>
+            </div>
           </amp-story-grid-layer>
         </amp-story-page>
 
-        {/* <!-- A "bookend" panel containing links to other resources will appear on the last page of your story if you include an `amp-story-bookend` that references a [bookend JSON config](/static/samples/json/bookend.json). --> */}
         <amp-story-bookend
-          src="https://amp.dev/static/samples/json/bookend.json"
+          src="/static/json/resources.json"
           layout="nodisplay"
         />
       </amp-story>
     </>
-  )
+  );
 }
